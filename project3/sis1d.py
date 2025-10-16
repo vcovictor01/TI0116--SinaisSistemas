@@ -9,7 +9,7 @@ xn = dados["x_n"].values
 N = len(xn)
 
 # Definindo M arbitrariamente
-M = 5
+M = 50
 
 # Implementação do sinal y[n]
 y = np.zeros(N)
@@ -22,8 +22,18 @@ for n in range(N):
  
     y[n] = (total/((2*M)+1))
 
-plt.plot(tn, xn, label='x[n]', alpha=0.6)
-plt.plot(tn, y, label='y[n] (média móvel)', linewidth=2)
-plt.xlabel('t (s)')
-plt.grid(True)
+
+#Plotando o gráfico
+plt.plot(tn, xn, label='x[n]', alpha=0.6, color="#2b615d")
+plt.plot(tn, y, label='y[n] (média móvel)', linewidth=2, color="#993636")
+plt.xlabel('tempo (segundos)')
+plt.ylabel('retorno da funação x[n] e y[n]')
+
+ax = plt.gca()
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.minorticks_on()
+ax.grid(True, which='major', color='lightgray', linestyle='-', linewidth=1)
+ax.grid(True, which='minor', color='lightgray', linestyle='-', linewidth=0.4)
+
 plt.show()
